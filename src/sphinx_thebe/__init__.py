@@ -156,7 +156,6 @@ def init_thebe_core(app, env, docnames):
             # If we've got `always load` on, then load thebe on every page.
             app.add_js_file(THEBE_JS_URL, **{"async": "async"})
     else:
-        logger.info("[sphinx-thebe]: Using thebe-lite")
         thebe_config = f"""\
             const thebe_selector = "{ app.config.thebe_config['selector'] }"
             const thebe_selector_input = "{ app.config.thebe_config['selector_input'] }"
@@ -437,7 +436,6 @@ def setup(app):
     locale_dir = os.path.join(package_dir, "translations", "locales")
     app.add_message_catalog(MESSAGE_CATALOG_NAME, locale_dir)
 
-    logger.verbose("Adding copy buttons to code blocks...")
     # Add our static path
     app.connect("builder-inited", st_static_path)
 
